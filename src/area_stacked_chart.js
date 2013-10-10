@@ -1,4 +1,4 @@
-﻿micropolar.chart.PolarAreaStackedChart = function module() {
+﻿micropolar.chart.AreaStackedChart = function module() {
   var config = {
     dotRadius: 5,
     axis: null,
