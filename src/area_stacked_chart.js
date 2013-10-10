@@ -6,7 +6,7 @@
     stroke: 'red',
     radialScale: null,
     angularScale: null,
-    colorScale: d3.scale.category20(),
+    colorScale: d3.scale.category10(),
     axisConfig: null
   };
   var dispatch = d3.dispatch('hover');
