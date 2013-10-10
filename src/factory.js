@@ -125,6 +125,51 @@ function areaChart(_config){
     polarAxis();
 }
 
+function areaStackedChart(_config){
+
+	if(_config && _config.size){
+        _config.width = _config.height = _config.size;
+    }
+
+    var polarPlot = micropolar.AreaStackedChart();
+
+    var scaleRandom = d3.scale.linear().domain([-3, 3]).range([0, 1]);
+    var config = {
+        geometry: [polarPlot],
+        data: d3.range(0, 12).map(function(deg, index){
+          return [deg * 50 + 50, ~~(Math.random() * 10 + 5)];
+        }),
+        height: 250, 
+        width: 250, 
+        radialDomain: [0, 20], 
+        angularDomain: ['North', 'East', 'South', 'West'], 
+        additionalAngularEndTick: false,
+        minorTicks: 2,
+        flip: true,
+        originTheta: -90,
+        radialAxisTheta: -30,
+        radialTicksSuffix: '%',
+        containerSelector: 'body'
+    };
+
+    micropolar._override(_config, config);
+
+    var dataStacked = d3.nest().key(function (d) { return d[3] }).entries(_config.data);
+    dataStacked.forEach(function (d) {
+      d.values.forEach(function (val) {
+        val.x = val[0];
+        val.y = +val[1];
+      })
+    });
+    var stacked = d3.layout.stack();
+    stacked(dataStacked);
+
+    config.data = dataStacked;
+
+    var polarAxis = micropolar.Axis().config(config);
+    polarAxis();
+}
+
 function clock(_config){
 
 	if(_config && _config.size){
@@ -164,5 +209,6 @@ micropolar.preset = {
     dotPlot: dotPlot,
     barChart: barChart,
     areaChart: areaChart,
+    areaStackedChart: areaStackedChart,
     clock: clock
  };
