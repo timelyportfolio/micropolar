@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 micropolar = {version: '0.1.0'};
+=======
+micropolar = {};
+>>>>>>> upstream/gh-pages
 micropolar.chart = {};
 
 micropolar.chart.RadialAxis = function module() {
@@ -448,7 +452,11 @@ function linePlot(_config){
     var config = {
         data: d3.range(0, 721, 1).map(function(deg, index){ return [deg, index/720*2]; }),
         height: 250, 
+<<<<<<< HEAD
         width: 300, 
+=======
+        width: 250, 
+>>>>>>> upstream/gh-pages
         angularDomain: [0, 360, 45], 
         flip: false,
         originTheta: 0,

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title></title> 
+    <script type='text/javascript' src="./d3.js"></script>
+    <script type='text/javascript' src="./micropolar.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-38721366-2', 'micropolar.org');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <div id="banner">
+        <img src="micropolar_600.png" />
+    </div>
+    <div id="logo">
+        <div class="logo"><img src="micropolar_black.png" width="50"/></div>
+        Micropolar is a minimalist polar chart library <br>based on a flexible polar axis implementation.<br>
+        <a href="https://github.com/biovisualize/micropolar/">GitHub</a>
+    </div>
+
+    <div class="example-container"></div>
+</div>
+
+<script>
+var container = d3.select('.example-container');
+for(chart in micropolar.factory){
+    container.append('div').classed(chart, true);
+    micropolar.factory[chart]({containerSelector: '.' + chart});
+}
+</script>
+
+</body>
+</html>
